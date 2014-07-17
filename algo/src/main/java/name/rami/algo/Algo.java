@@ -4,7 +4,7 @@ package name.rami.algo;
  * Hello world!
  *
  */
-public class App 
+public class Algo 
 {
     public static void main( String[] args )
     {

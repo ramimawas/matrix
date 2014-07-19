@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- For assistance related to logback-translator or configuration  -->
+<!-- files in general, please contact the logback user mailing list -->
+<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
+<!--                                                                -->
+<configuration scan="true" scanPeriod="30 seconds">
+  <appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+  <!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy-->
+  <!--for further documentation-->
+    <file>/logs/${app.logFile:-output}.log</file>
+    <encoder>
+      <pattern>%d{"HH:mm:ss,SSS"} %-5p [G:%X{callerId} R:%X{requestId}] [%t][%c{1}] - %m%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>/logs/${app.logFile:-output}.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>      
+      <pattern>%-5p [%c{1}] %msg%n</pattern>
+    </encoder>
+  </appender>
+  <logger name="name.rami" additivity="true" level="DEBUG">
+    <appender-ref ref="logfile"/>
+  </logger>
+  <root level="INFO">
+    <appender-ref ref="stdout"/>
+  </root>
+</configuration>

@@ -6,52 +6,55 @@
 
 package name.rami.algo.Tree;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import static junit.framework.Assert.assertTrue;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-//import org.junit.Test;
+import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 /**
  *
  * @author rami <rami.developer@gmail.com>
  */
-public class BinaryTreeTest
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public BinaryTreeTest( String testName )
-    {
-        super( testName );
-    }
+public class BinaryTreeTest {
+  private static final Logger logger = LoggerFactory.getLogger(BinaryTreeTest.class);
+  public BinaryTreeTest() {
+  }
+  
+  @Test
+  public void testApp() {
+    BinaryTree btree = new BinaryTree<Integer>();
+    int[] dataRaw = {9, 4, 3, 1, 11, 2, 8, 12, 7, 5, 6, 10};
+    List<Integer> data = new ArrayList<Integer>();
+    for(int i = 0; i<dataRaw.length; i++) data.add(dataRaw[i]);
+    Random rand = new Random(9);
+    btree.insert(data);
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( BinaryTreeTest.class );
-    }
+    logger.info("Printing IN ORDER: ");
+    btree.print(BinaryTree.Order.IN);
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        BinaryTree btree = new BinaryTree<Integer>();
-        btree.insert(new Integer(10));
-        btree.insert(new Integer(1));
-        btree.insert(new Integer(15));
-        btree.insert(new Integer(5));
-        btree.insert(new Integer(25));
-        btree.insert(new Integer(50));
-        btree.insert(new Integer(-5));
-        btree.print(BinaryTree.Order.IN);
-        assertTrue( true );
-    }
+    logger.info("Printing PRE ORDER: ");
+    btree.print(BinaryTree.Order.PRE);
+
+    logger.info("Printing POST ORDER: ");
+    btree.print(BinaryTree.Order.POST);
+
+    Integer i = new Integer(rand.nextInt(data.size()));
+    Integer toFind = data.get(i);
+    TreeNode n = btree.find(toFind);
+    if(n != null) {
+        logger.info(toFind + " was found:");
+        n.print();
+        assert(n.getData() == toFind);
+        assert(n.getIndex() == data.indexOf(toFind));
+    } else {
+        logger.info(toFind + " was NOT found");
+    }        
+    logger.info("Maximum Depth: " + btree.maxDepth());
+    logger.info("Size: " + btree.size());
+    assertTrue(btree.size() == data.size());
+  }
 }
 

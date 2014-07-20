@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package name.rami.algo.Strings;
+package name.rami.algo.string;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -14,7 +14,7 @@ import org.junit.runners.Suite;
  * @author rami <rami.developer@gmail.com>
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({StringsUtilityTest.class })
+@Suite.SuiteClasses({StringUtilTest.class })
 
 public class AllTests {
     // empty

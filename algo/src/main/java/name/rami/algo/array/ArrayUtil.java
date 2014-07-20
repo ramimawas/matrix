@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package name.rami.algo.Strings;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashSet;
+package name.rami.algo.array;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

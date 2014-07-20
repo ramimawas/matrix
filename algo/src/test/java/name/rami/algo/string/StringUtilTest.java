@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package name.rami.algo.Strings;
+package name.rami.algo.string;
 
+import name.rami.algo.string.StringUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,10 +23,10 @@ import org.slf4j.LoggerFactory;
  *
  * @author rami <rami.developer@gmail.com>
  */
-public class StringsUtilityTest {
-  private static final Logger logger = LoggerFactory.getLogger(StringsUtilityTest.class);
+public class StringUtilTest {
+  private static final Logger logger = LoggerFactory.getLogger(StringUtilTest.class);
   
-    public StringsUtilityTest() {}
+    public StringUtilTest() {}
     
     @BeforeClass
     public static void setUpClass() throws Exception {
@@ -127,16 +128,16 @@ public class StringsUtilityTest {
 }
 
 /*
-public class StringsUtilityTest
+public class StringUtilTest
     extends TestCase {
 
-public StringsUtilityTest( String testName ) {
+public StringUtilTest( String testName ) {
         super( testName );
         rand = new RandomString(10);
         randsec = new SecureRandomString(10);
     }
 
     public static Test suite() {
-        return new TestSuite(StringsUtilityTest.class);
+        return new TestSuite(StringUtilTest.class);
     }
 */

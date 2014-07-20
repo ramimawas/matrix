@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-package name.rami.algo.Strings;
+package name.rami.algo.array;
+import name.rami.algo.array.ArrayUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package name.rami.algo.Strings;
+package name.rami.algo.string;
 
 import java.util.Random;
 

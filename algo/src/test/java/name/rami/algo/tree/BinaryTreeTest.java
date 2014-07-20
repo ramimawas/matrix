@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package name.rami.algo.Tree;
+package name.rami.algo.tree;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

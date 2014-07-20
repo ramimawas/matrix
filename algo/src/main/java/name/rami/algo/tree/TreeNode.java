@@ -1,17 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * MIT Licensed
+ * Copyright 2014 REM <rami.developer@gmail.com>.
  */
 
-package name.rami.algo.Tree;
+package name.rami.algo.tree;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 /**
- *
- * @author rami
+ * @param <T>
  */
 public class TreeNode<T extends Comparable<T> >{
   private static final Logger logger = LoggerFactory.getLogger(BinaryTree.class);

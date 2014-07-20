@@ -1,26 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * MIT Licensed
+ * Copyright 2014 REM <rami.developer@gmail.com>.
  */
 
-package name.rami.algo.Tree;
+package name.rami.algo.tree;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 /**
- *
- * @author rami <rami.developer@gmail.com>
+ * @param <T>
  */
 public class BinaryTree<T extends Comparable<T>> {
   private static final Logger logger = LoggerFactory.getLogger(BinaryTree.class);
   private TreeNode root;
-  private int count = 0;
+  private int count;
 
   public enum Order {
     PRE, POST, IN
@@ -31,10 +28,11 @@ public class BinaryTree<T extends Comparable<T>> {
 
   public BinaryTree() {
     root = null;
+    count = 0;
   }
 
   public TreeNode insert(List<T> toInsertDataList) {
-    if(toInsertDataList == null || toInsertDataList.size() == 0)
+    if(toInsertDataList == null || toInsertDataList.isEmpty())
         return null;
     for(T data: toInsertDataList)
         insert(data);

@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * MIT Licensed
+ * Copyright 2014 REM <rami.developer@gmail.com>.
  */
 
 package name.rami.algo.string;
@@ -11,7 +10,6 @@ import org.junit.runners.Suite;
 
 /**
  *
- * @author rami <rami.developer@gmail.com>
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({StringUtilTest.class })

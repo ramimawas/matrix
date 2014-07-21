@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * MIT Licensed
+ * Copyright 2014 REM <rami.developer@gmail.com>.
  */
 
 package name.rami.algo.string;
@@ -9,13 +8,11 @@ package name.rami.algo.string;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
-
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 /**
  *
- * @author rami <rami.developer@gmail.com>
  */
 public class StringUtil {
   private static final Logger logger = LoggerFactory.getLogger(StringUtil.class);

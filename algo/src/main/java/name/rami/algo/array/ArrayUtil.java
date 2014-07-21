@@ -1,11 +1,16 @@
+/*
+ * MIT Licensed
+ * Copyright 2014 REM <rami.developer@gmail.com>.
+ */
+
 package name.rami.algo.array;
 
+import java.util.Arrays;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 /**
  *
- * @author rami <rami.developer@gmail.com>
  */
 public class ArrayUtil {
   private static final Logger logger = LoggerFactory.getLogger(ArrayUtil.class);
@@ -69,6 +74,47 @@ public class ArrayUtil {
         cube[last][last-offset] = cube[i][last]; // right to bottom
         cube[i][last] = top; // top to right
       }
+    }
+  }
+  
+  public static int searchInfiniteSortedArray (int toFind, int[] a) {
+    logger.debug("searchInfiniteSortedArray: toFind {}, a: {}", toFind, Arrays.toString(a));
+    int i, ptr;
+    boolean smaller = false, found = false;
+    for (i=-1, ptr=0; ptr<a.length; i++, ptr=(int)Math.pow(2, i)) {
+      logger.debug("a[{}]: {}", ptr, a[ptr]);
+      if (toFind==a[ptr])
+        return ptr;
+      if (toFind<a[ptr]) {
+        smaller = true;
+        break;
+      }
+    }
+    logger.debug("i: {}", i);
+    return smaller? searchBinary(toFind, a, (int)Math.pow(2, i-1)+1, (int)Math.pow(2, i)-1):
+                    searchBinary(toFind, a, (int)Math.pow(2, i-1)+1, a.length);
+  }
+  
+  public static int searchBinary (int toFind, int[] a) {
+    return searchBinary(toFind, a, 0, a.length-1);
+  }
+  
+  private static int searchBinary (int toFind, int[] a, int start, int end) {
+    int mid = (end-start)/2;
+    mid = mid<start? start: mid;
+    logger.debug("searchBinary: toFind {}, start {}, end {}, mid: {}", toFind, start, end, mid);
+    logger.debug("a: {}", Arrays.toString(a));
+    if (start>end) {
+      return -1;
+    } else {
+      if (end == start)
+        return toFind == a[start]? start: -1;
+      if(toFind > a[mid])
+        return searchBinary(toFind, a, mid+1, end);
+      else if (toFind < a[mid])
+        return searchBinary(toFind, a, start, mid-1);
+      else
+        return mid;
     }
   }
 }

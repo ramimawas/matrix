@@ -6,8 +6,9 @@
 package name.rami.algo.list;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import name.rami.algo.tree.TreeNode;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -133,22 +134,49 @@ public class LinkedList<T extends Comparable<T>> {
     return found;
   }
   
-  public ListNode findKthToLast(int k) {
+  public ListNode nthToLast(int k) {
+    return nthToLast2(k);
+  }
+  
+  public ListNode nthToLast1(int k) {
+    logger.debug("nthToLast1: {}", k);
+    if(k<=0) return null;
     ListNode tmp1 = head, tmp2 = head;
-    int count = 0;
-    
     for(int i=0; i<k-1; i++) {
       if(tmp1 == null) return null;
       tmp1 = tmp1.getNext();
     }
+    logger.debug("tmp1: {}", tmp1.getData());
+    if(tmp1 == null) return null;
     
-   if(tmp1 == null) return null;
-    
-    while (tmp1 != null) {
+    while (tmp1.getNext() != null) {
       tmp1 = tmp1.getNext();
       tmp2 = tmp2.getNext();
-    }    
+    }
+    logger.debug("data: {}", tmp2.getData());
     return tmp2;
+  }
+  
+  public ListNode nthToLast2(int k) {
+    logger.debug("nthToLast2: {}", k);
+    Map<Integer, ListNode> args = new HashMap<Integer, ListNode>();
+    _nthToLast2(head, args, k);
+    return args.get(k);
+  }
+  
+  private int _nthToLast2(ListNode head, Map args, int k) {
+    logger.debug("_nthToLast2: {}", k);
+    if (head == null)
+      return 0;
+    else {
+      int count = _nthToLast2(head.getNext(), args, k) + 1;
+      if(count == k) {
+        args.put(k, head);
+        logger.debug("data: {}", head.getData());
+        return k;
+      }
+      return count;
+    }
   }
   
   public ListNode partition(T divider) {
@@ -170,6 +198,39 @@ public class LinkedList<T extends Comparable<T>> {
       }
     }
     return head;
+  }
+  
+  public boolean isPalindrom() {
+    Result result = isPalindrom(head, size);
+    return result.isPalindrom;
+  }
+  
+  class Result {
+    public ListNode node;
+    public boolean isPalindrom;
+
+    public Result(ListNode node, boolean isPalindrom) {
+      this.node = node;
+      this.isPalindrom = isPalindrom;
+    }
+  }
+  
+  private Result isPalindrom(ListNode n, int len) {
+    if (n == null ||len <= 0)
+      return new Result(null, true);
+    else if (len == 1)
+      return new Result(head.getNext(), true);
+    else if (len == 2)
+      return new Result(head.getNext().getNext(), head.getData().equals(head.next().getData()));
+    
+    Result result = isPalindrom(head.getNext(), len-2);
+    if(!result.isPalindrom || result.node == null)
+      return result;
+    else {
+      result.isPalindrom = head.getData().equals(result.node.getData());
+      result.node = result.node.next();
+      return result;
+    }
   }
   
   public List toList() {

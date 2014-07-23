@@ -15,19 +15,19 @@ import org.slf4j.LoggerFactory;
 /**
  * @param <T>
  */
-public class LinkedList<T extends Comparable<T>> {
-  private static final Logger logger = LoggerFactory.getLogger(LinkedList.class);
+public class LinkList<T extends Comparable<T>> {
+  private static final Logger logger = LoggerFactory.getLogger(LinkList.class);
   private ListNode head;
   private ListNode tail;
   private int size;
   
-  public LinkedList() {}
+  public LinkList() {}
   
-  public LinkedList(List<T> toInsertList) {
+  public LinkList(List<T> toInsertList) {
     append(toInsertList);
   }
   
-  public LinkedList(T[] toInsertList) {
+  public LinkList(T[] toInsertList) {
     append(toInsertList);
   }
   

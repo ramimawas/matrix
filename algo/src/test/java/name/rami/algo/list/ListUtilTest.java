@@ -34,7 +34,7 @@ public class ListUtilTest {
   @Test
   public void testCreate() {
     Integer[] data = {9, 4, 3, 1, 11, 2, 8, 12, 7, 5, 6, 10};
-    LinkedList list = new LinkedList(data);
+    LinkList list = new LinkList(data);
     list.printDetails();
     list.remove(9);
     list.printDetails();
@@ -55,7 +55,7 @@ public class ListUtilTest {
     //Integer[] data = {9, 4, 3, 1, 11, 2, 8, 12, 7, 5, 6, 10};
     //Integer[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     Integer[] data = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    LinkedList list = new LinkedList(data);
+    LinkList list = new LinkList(data);
     list.printDetails();
     list.partition(5);
     list.printDetails();
@@ -69,7 +69,7 @@ public class ListUtilTest {
       put(data.length-3, true); // 5
       put(data.length, true); //1st
     }};
-    LinkedList list = new LinkedList<Integer>(data);
+    LinkList list = new LinkList<Integer>(data);
     list.printDetails();
     for (Map.Entry test : tests.entrySet()) {
       Integer i = (Integer)test.getKey();
